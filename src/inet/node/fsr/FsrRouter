@@ -1,0 +1,14 @@
+package inet.node.custom;
+
+import inet.node.inet.AdhocHost;
+import inet.routing.fsr.Fsr;
+
+module RouteNode extends AdhocHost {
+    submodules:
+        routeProc: Fsr {
+            @display("p=750,200");
+        }
+    connections allowunconnected:
+        routeProc.outSocket --> at.in++;
+        routeProc.inSocket <-- at.out++;
+}
